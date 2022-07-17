@@ -43,3 +43,11 @@ updateDisplay() {
 }
 
 const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement)
+
+//Event listener to add clicked number to the calculator and update the display
+numberButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        calculator.appendNumber(button.innerText)
+        calculator.updateDisplay()
+    })
+})
