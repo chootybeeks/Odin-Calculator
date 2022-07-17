@@ -4,6 +4,72 @@ class Calculator {
         this.currentOperandTextElement = currentOperandTextElement
         this.clear()
     }
+
+    //Deletes all the displayed values
+    clear() {
+        this.currentOperand = ''
+        this.previousOperand = ''
+        this.operation = undefined
+    }
+
+    delete() {
+
+    }
+
+    appendNumber(number) {
+        //prevent multiple periods
+        if (number === '.' && this.currentOperand.includes('.')) return
+
+        this.currentOperand = this.currentOperand.toString() + number.toString()
+    }
+
+    chooseOperation(operation) {
+        if (this.currentOperand === '') return
+        if(this.previousOperand !== '') {
+            this.compute()
+        }
+
+        this.operation = operation
+        this.previousOperand = this.currentOperand
+        this.currentOperand = ''
+    }
+
+    compute() {
+        let result
+        const previous = parseFloat(this.previousOperand)
+        const current = parseFloat(this.currentOperand)
+
+        if (isNaN(previous) || isNaN(current)) return
+
+        switch(this.operation) {
+            case '+':
+                result = previous + current
+                break
+            case '-':
+                result = previous - current
+                break
+            case '*':
+                result = previous * current
+                break
+            case '÷':
+                result = previous / current
+                break
+            default:
+                return
+        }
+        this.currentOperand = result
+        this.operation = undefined
+        this.previousOperand = ''
+
+    }
+
+    updateDisplay() {
+    //This is for testing!//
+    //this.currentOperandTextElement.innerText = this.currentOperand
+
+    this.previousOperandTextElement = this.previousOperand
+
+    }
 }
 
 //Selectors for all of the buttons and operations
@@ -14,72 +80,6 @@ const deleteButton = document.querySelector('[data-delete]')
 const allClearButton = document.querySelector('[data-all-clear]')
 const previousOperandTextElement = document.querySelector('[data-previous-operand]')
 const currentOperandTextElement = document.querySelector('[data-current-operand]')
-
-//Deletes all the displayed values
-clear() {
-    this.currentOperand = ''
-    this.previousOperand = ''
-    this.operation = undefined
-}
-
-delete() {
-
-}
-
-appendNumber(number) {
-    //prevent multiple periods
-    if (number === '.' && this.currentOperand.includes('.')) return
-
-    this.currentOperand = this.currentOperand.toString() + number.toString()
-}
-
-chooseOperation(operation) {
-    if (this.currentOperand === '') return
-    if(this.previousOperand !== '') {
-        this.compute()
-    }
-
-    this.operation = operation
-    this.previousOperand = this.currentOperand
-    this.currentOperand = ''
-}
-
-compute() {
-    let result
-    const previous = parseFloat(this.previousOperand)
-    const current = parseFloat(this.currentOperand)
-
-    if (isNaN(previous) || isNaN(current)) return
-
-    switch(this.operation) {
-        case '+':
-            result = previous + current
-            break
-        case '-':
-            result = previous - current
-            break
-        case '*':
-            result = previous * current
-            break
-        case '÷':
-            result = previous / current
-            break
-        default:
-            return
-    }
-    this.currentOperand = result
-    this.operation = undefined
-    this.previousOperand = ''
-
-}
-
-updateDisplay() {
-//This is for testing!//
-//this.currentOperandTextElement.innerText = this.currentOperand
-
-this.previousOperandTextElement = this.previousOperand
-
-}
 
 const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement)
 
