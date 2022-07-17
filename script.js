@@ -34,7 +34,14 @@ appendNumber(number) {
 }
 
 chooseOperation(operation) {
+    if (this.currentOperand === '') return
+    if(this.previousOperand !== '') {
+        this.compute()
+    }
 
+    this.operation = operation
+    this.previousOperand = this.currentOperand
+    this.currentOperand = ''
 }
 
 compute() {
@@ -44,6 +51,8 @@ compute() {
 updateDisplay() {
 //This is for testing!//
 //this.currentOperandTextElement.innerText = this.currentOperand
+
+this.previousOperandTextElement = this.previousOperand
 
 }
 
