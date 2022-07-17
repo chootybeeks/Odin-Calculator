@@ -15,8 +15,11 @@ const allClearButton = document.querySelector('[data-all-clear]')
 const previousOperandTextElement = document.querySelector('[data-previous-operand]')
 const currentOperandTextElement = document.querySelector('[data-current-operand]')
 
+//Deletes all the displayed values
 clear() {
-
+    this.currentOperand = ''
+    this.previousOperand = ''
+    this.operation = undefined
 }
 
 delete() {
@@ -36,5 +39,7 @@ compute() {
 }
 
 updateDisplay() {
-    
+
 }
+
+const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement)
