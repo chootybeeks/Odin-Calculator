@@ -27,7 +27,10 @@ delete() {
 }
 
 appendNumber(number) {
+    //prevent multiple periods
+    if (number === '.' && this.currentOperand.includes('.')) return
 
+    this.currentOperand = this.currentOperand.toString() + number.toString()
 }
 
 chooseOperation(operation) {
@@ -39,6 +42,8 @@ compute() {
 }
 
 updateDisplay() {
+//This is for testing!//
+//this.currentOperandTextElement.innerText = this.currentOperand
 
 }
 
