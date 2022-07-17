@@ -45,6 +45,31 @@ chooseOperation(operation) {
 }
 
 compute() {
+    let result
+    const previous = parseFloat(this.previousOperand)
+    const current = parseFloat(this.currentOperand)
+
+    if (isNaN(previous) || isNaN(current)) return
+
+    switch(this.operation) {
+        case '+':
+            result = previous + current
+            break
+        case '-':
+            result = previous - current
+            break
+        case '*':
+            result = previous * current
+            break
+        case '÷':
+            result = previous / current
+            break
+        default:
+            return
+    }
+    this.currentOperand = result
+    this.operation = undefined
+    this.previousOperand = ''
 
 }
 
