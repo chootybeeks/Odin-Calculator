@@ -1,20 +1,8 @@
-function add(a, b) {
-    return a + b
-}
-
-function subtract(a, b) {
-    return a - b
-}
-
-function multiply(a, b) {
-    return a * b
-}
-
-function divide(a, b) {
-    return a / b
-}
-
-//I'm confused by this function, leave it for now but probably will have to refactor it
-function operate(operator, a, b) {
-    return operator(a, b)
-}
+//Selectors for all of the buttons and operations
+const numberButtons = document.querySelectorAll('[data-number]')
+const operationButtons = document.querySelectorAll('[data-operation]')
+const equalsButton = document.querySelector('[data-equals]')
+const deleteButton = document.querySelector('[data-delete]')
+const allClearButton = document.querySelector('[data-all-clear]')
+const previousOperandTextElement = document.querySelector('[data-previous-operand]')
+const currentOperandTextElement = document.querySelector('[data-current-operand]')
