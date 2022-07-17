@@ -73,3 +73,9 @@ operationButtons.forEach(button => {
         calculator.updateDisplay()
     })
 })
+
+//Event listener for equals button
+equalsButton.addEventListener('click', () => {
+    calculator.compute()
+    calculator.updateDisplay()
+})
